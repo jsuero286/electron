@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const { spawn } = require("child_process");
+const path = require("path");
 
 let mainWindow;
 
@@ -9,17 +10,38 @@ function createWindow() {
     height: 800,
     fullscreen: true,
     autoHideMenuBar: true,
+    backgroundColor: "#000000",
     webPreferences: {
-      preload: require("path").join(__dirname, "preload.js"),
+      preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
       nodeIntegration: false,
     },
   });
 
-  mainWindow.loadURL("http://localhost:4200");
+  const isDev = !app.isPackaged;
+
+  if (isDev) {
+    mainWindow.loadURL("http://localhost:4200");
+  } else {
+    mainWindow.loadFile(
+      path.join(__dirname, "../dist/htpc-hub/browser/index.html")
+    );
+  }
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  createWindow();
+
+  // Opcional: ocultar dock en modo producción
+  if (app.isPackaged) {
+    app.dock.hide();
+  }
+});
+
+
+// ----------------------
+// RETROARCH
+// ----------------------
 
 ipcMain.on("launch-retro", () => {
   mainWindow.hide();
@@ -30,6 +52,11 @@ ipcMain.on("launch-retro", () => {
     mainWindow.show();
   });
 });
+
+
+// ----------------------
+// STREAMING APPS
+// ----------------------
 
 ipcMain.on("launch-app", (event, appName) => {
   mainWindow.hide();
@@ -43,3 +70,6 @@ ipcMain.on("launch-app", (event, appName) => {
   });
 });
 
+ipcMain.on("exit-app", () => {
+  app.quit();
+});

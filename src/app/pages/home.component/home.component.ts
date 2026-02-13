@@ -108,7 +108,7 @@ export class HomeComponent {
     }
 
     if (action === 'exit') {
-      (window as any).api.shutdown();
+        (window as any).api.exitApp();
     }
   }
 }
