@@ -3,25 +3,24 @@
   "version": "0.0.0",
   "main": "electron/main.js",
   "scripts": {
-  "dev": "concurrently \"ng serve\" \"wait-on http://localhost:4200 && electron .\"",
-  "build-angular": "ng build",
-  "build": "npm run build-angular",
-  "dist": "npm run build && electron-builder"
-},
-
-"build": {
-  "appId": "com.htpc.hub",
-  "productName": "HTPC Hub",
-  "mac": {
-    "target": "dmg",
-    "category": "public.app-category.entertainment"
+    "dev": "concurrently \"ng serve\" \"wait-on http://localhost:4200 && electron .\"",
+    "build-angular": "ng build",
+    "build": "npm run build-angular",
+    "dist": "npm run build && electron-builder"
   },
-  "files": [
-    "dist/**/*",
-    "electron/**/*",
-    "package.json"
-  ]
-},
+  "build": {
+    "appId": "com.htpc.hub",
+    "productName": "HTPC Hub",
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.entertainment"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ]
+  },
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
@@ -53,6 +52,7 @@
     "@angular/compiler-cli": "^21.1.0",
     "concurrently": "^9.2.1",
     "electron": "^40.4.0",
+    "electron-builder": "^26.7.0",
     "jsdom": "^27.1.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8",

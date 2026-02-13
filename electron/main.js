@@ -73,3 +73,8 @@ ipcMain.on("launch-app", (event, appName) => {
 ipcMain.on("exit-app", () => {
   app.quit();
 });
+
+app.on("window-all-closed", () => {
+  app.quit();
+});
+
