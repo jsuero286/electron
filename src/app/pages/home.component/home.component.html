@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="menu" [@menuAnimation]="currentMenu">
+    <div
+      *ngFor="let item of menu; let i = index"
+      [class.active]="i === selectedIndex"
+      class="menu-item"
+    >
+      {{ item.label }}
+    </div>
+  </div>
+</div>
+
