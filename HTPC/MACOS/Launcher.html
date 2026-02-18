@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTPC Launcher</title>
+<style>
+body {
+    margin: 0;
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 250px);
+    gap: 30px;
+}
+button {
+    height: 120px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: none;
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+button:focus {
+    outline: 3px solid #00aaff;
+    background: #333;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<button onclick="launch('Netflix')">Netflix</button>
+<button onclick="launch('Disney')">Disney+</button>
+<button onclick="launch('Prime')">Prime Video</button>
+<button onclick="launch('HBO')">HBO Max</button>
+<button onclick="launch('YouTube')">YouTube</button>
+<button onclick="launch('Crunchyroll')">Crunchyroll</button>
+<button onclick="launch('AppleTV')">Apple TV+</button>
+<button onclick="launch('Kick')">Kick</button>
+<button onclick="launch('Jellyfin')">Jellyfin</button>
+</div>
+
+<script>
+function launch(app) {
+    window.location.href = "htpc://" + app;
+}
+</script>
+</body>
+</html>
