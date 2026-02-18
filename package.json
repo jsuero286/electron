@@ -4,7 +4,7 @@
   "main": "electron/main.js",
   "scripts": {
     "dev": "concurrently \"ng serve\" \"wait-on http://localhost:4200 && electron .\"",
-    "build-angular": "ng build",
+    "build-angular": "ng build  --base-href ./",
     "build": "npm run build-angular",
     "dist": "npm run build && electron-builder"
   },

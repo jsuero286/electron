@@ -24,7 +24,7 @@ function createWindow() {
     mainWindow.loadURL("http://localhost:4200");
   } else {
     mainWindow.loadFile(
-      path.join(__dirname, "../dist/htpc-hub/browser/index.html")
+      path.join(app.getAppPath(), "dist/htpc-hub/browser/index.html")
     );
   }
 }
