@@ -28,9 +28,9 @@ function getScriptConfig(appName) {
 
 function getRetroConfig() {
   if (platform === "darwin") {
-    return { cmd: "open", args: ["-a", "RetroArch"] };
+    return { cmd: "open", args: ["-a", "RetroBat"] };
   } else if (platform === "win32") {
-    return { cmd: "cmd", args: ["/c", "start", "RetroArch"] };
+    return { cmd: "cmd", args: ["/c", "start", "RetroBat"] };
   } else {
     return { cmd: "retroarch", args: [] };
   }
